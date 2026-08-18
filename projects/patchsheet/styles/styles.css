@@ -1,0 +1,409 @@
+:root {
+    --primary-color: #222;
+    --border-color: #ccc;
+    --bg-light: #f9f9f9;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: var(--primary-color);
+    margin: 0;
+    padding: 20px;
+    background-color: #fff;
+    line-height: 1.4;
+}
+
+.sheet-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+}
+
+header {
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.show-title-container {
+    margin-bottom: 15px;
+}
+
+.show-title-container label {
+    font-size: 0.85rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 4px;
+    color: #555;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="time"],
+select {
+    font-size: 1.2rem;
+    padding: 6px 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    width: 100%;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+input#showNameInput {
+    font-size: 1.8rem;
+    font-weight: bold;
+    width: 100%;
+    border: none;
+    border-bottom: 2px dashed var(--border-color);
+    background: transparent;
+    padding: 4px 0;
+    outline: none;
+}
+
+input#showNameInput:focus {
+    border-bottom: 2px solid var(--primary-color);
+}
+
+.meta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.meta-field label {
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 3px;
+    color: #555;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.section-header h2 {
+    margin: 0;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+.shortcut {
+    text-decoration: underline;
+}
+
+.input-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.input-table th, 
+.input-table td {
+    border: 1px solid var(--border-color);
+    padding: 8px 12px;
+    text-align: left;
+    font-size: 0.95rem;
+    vertical-align: middle;
+}
+
+.input-table th {
+    background-color: var(--bg-light);
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    color: #555;
+}
+
+.input-table th.route-th-empty {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+    width: 1%;
+}
+
+.input-table td.route-td-empty {
+    border: none !important;
+    background: transparent !important;
+    padding: 0 !important;
+}
+
+.input-table td.ch-col {
+    width: 70px;
+    text-align: center;
+}
+
+.ch-input {
+    width: 55px;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 4px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+}
+
+.input-table td.action-col {
+    width: 40px;
+    text-align: center;
+}
+
+.delete-btn {
+    background: transparent;
+    border: none;
+    color: #c00;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.delete-btn:hover {
+    color: #f00;
+}
+
+.route-col {
+    background-color: #000 !important;
+    color: #fff !important;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 0.6rem !important;
+    letter-spacing: 0.05em;
+    text-align: center;
+    width: 1%;
+    white-space: nowrap;
+    padding: 0.025rem !important;
+}
+
+.route-col span {
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    display: inline-block;
+    padding: 0.1rem 0.01rem !important;
+}
+
+.placeholder-content {
+    border: 2px dashed #ddd;
+    padding: 40px;
+    text-align: center;
+    color: #777;
+    font-style: italic;
+    border-radius: 6px;
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal {
+    background: #fff;
+    padding: 25px;
+    border-radius: 6px;
+    width: 100%;
+    max-width: 400px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.modal h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form-group select {
+    font-size: 1rem;
+    padding: 6px 10px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.btn-secondary {
+    background-color: #ddd;
+    color: #333;
+}
+
+.route-mgmt-section {
+    margin-top: 15px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 10px;
+}
+
+.route-mgmt-list {
+    list-style: none;
+    padding: 0;
+    margin: 5px 0 0 0;
+    font-size: 0.85rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.route-badge {
+    background: #eee;
+    padding: 4px 8px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.route-badge button {
+    background: none;
+    border: none;
+    color: #c00;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+@media print {
+    body {
+        padding: 0;
+        background: #fff;
+    }
+    .sheet-container {
+        border: none;
+        padding: 0;
+        max-width: 100%;
+    }
+    header {
+        padding-bottom: 8px;
+        margin-bottom: 10px;
+    }
+    .show-title-container {
+        margin-bottom: 8px;
+    }
+    .shortcut {
+        text-decoration: none !important;
+    }
+    input[type="text"],
+    input[type="number"],
+    input[type="date"],
+    input[type="time"],
+    select {
+        border: none;
+        border-radius: 0;
+        padding: 2px 0;
+        background: transparent;
+    }
+    input#showNameInput {
+        border: none;
+    }
+    input[type="date"]::-webkit-calendar-picker-indicator,
+    input[type="time"]::-webkit-calendar-picker-indicator {
+        display: none !important;
+        -webkit-appearance: none;
+    }
+    .ch-input {
+        border: none !important;
+        background: transparent !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        box-shadow: none !important;
+        font-size: 0.85rem;
+        font-weight: bold;
+        text-align: center;
+        -webkit-appearance: none !important;
+        -moz-appearance: textfield !important;
+    }
+    .ch-input::-webkit-outer-spin-button,
+    .ch-input::-webkit-inner-spin-button {
+        -webkit-appearance: none !important;
+        display: none !important;
+        margin: 0 !important;
+    }
+    .no-print, .action-col, .delete-btn {
+        display: none !important;
+    }
+    
+    .input-table th, 
+    .input-table td {
+        border: none !important;
+        padding: 3px 8px !important;
+        font-size: 0.82rem;
+    }
+    .input-table th {
+        border-bottom: 1px solid #000 !important;
+        background-color: #eee !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        padding: 4px 8px !important;
+    }
+    .input-table tbody tr:nth-child(even) td:not(.route-col) {
+        background-color: #f2f2f2 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .input-table th.route-th-empty,
+    .input-table td.route-td-empty {
+        border: none !important;
+        background: transparent !important;
+        padding: 0 !important;
+    }
+    .route-col {
+        background-color: #000 !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        color: #fff !important;
+        padding: 0.025rem !important;
+    }
+}

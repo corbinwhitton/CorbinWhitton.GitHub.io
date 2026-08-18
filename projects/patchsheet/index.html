@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sound Engineering Input & Reference Sheet</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+
+    <div class="sheet-container">
+        <header>
+            <div class="show-title-container">
+                <label for="showNameInput">Show <span class="shortcut">N</span>ame</label>
+                <input type="text" id="showNameInput" placeholder="Enter Show Name...">
+            </div>
+
+            <div class="meta-grid">
+                <div class="meta-field">
+                    <label for="dateInput"><span class="shortcut">D</span>ate</label>
+                    <input type="date" id="dateInput">
+                </div>
+                <div class="meta-field">
+                    <label for="callTimeInput"><span class="shortcut">C</span>all Time</label>
+                    <input type="time" id="callTimeInput">
+                </div>
+                <div class="meta-field">
+                    <label for="showTimeInput"><span class="shortcut">E</span>vent Start</label>
+                    <input type="time" id="showTimeInput">
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div class="section-header">
+                <h2>Input List</h2>
+                <div class="header-actions">
+                    <button class="btn no-print" id="openRouteModalBtn">+ <span class="shortcut">R</span>oute</button>
+                    <button class="btn no-print" id="openModalBtn">+ <span class="shortcut">S</span>ource</button>
+                </div>
+            </div>
+
+            <div id="tableContainer">
+                <div class="placeholder-content" id="emptyState">
+                    No inputs added yet. Click "+ Route" or "+ Source" to begin building your input list.
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Source Modal Popup -->
+    <div class="modal-overlay" id="sourceModal">
+        <div class="modal">
+            <h3>Add Input Source</h3>
+            <form id="sourceForm">
+                <div class="form-group">
+                    <label for="modalChInput">Channel #</label>
+                    <input type="number" id="modalChInput" min="1" required>
+                </div>
+                <div class="form-group">
+                    <label for="personInput">Person / Performer</label>
+                    <input type="text" id="personInput" placeholder="e.g., Bob" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="sourceInput">Source / Instrument</label>
+                    <input type="text" id="sourceInput" placeholder="e.g., Vocal" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="materialsInput">Materials / Gear</label>
+                    <input type="text" id="materialsInput" placeholder="e.g., XLR 50', Mic Stand, IEM" autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="sourceRouteSelect">Route / Stage Box</label>
+                    <select id="sourceRouteSelect">
+                        <option value="">-- None --</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelModalBtn">Cancel</button>
+                    <button type="submit" class="btn">Add Source</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Route Modal Popup -->
+    <div class="modal-overlay" id="routeModal">
+        <div class="modal">
+            <h3>Add Route</h3>
+            <form id="routeForm">
+                <div class="form-group">
+                    <label for="routeNameInput">Route Name</label>
+                    <input type="text" id="routeNameInput" placeholder="e.g., StageBox1" required autocomplete="off">
+                </div>
+                <div class="form-group">
+                    <label for="parentRouteSelect">Parent Route</label>
+                    <select id="parentRouteSelect">
+                        <option value="">-- None --</option>
+                    </select>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelRouteModalBtn">Cancel</button>
+                    <button type="submit" class="btn">Add Route</button>
+                </div>
+            </form>
+
+            <div class="route-mgmt-section">
+                <label>Existing Routes:</label>
+                <ul class="route-mgmt-list" id="routeMgmtList">
+                    <!-- populated dynamically -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>
