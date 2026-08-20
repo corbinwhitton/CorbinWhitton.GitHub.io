@@ -2,22 +2,45 @@
     --primary-color: #222;
     --border-color: #ccc;
     --bg-light: #f9f9f9;
+    --bg-main: #fff;
+    --text-color: #222;
+    --text-muted: #555;
+    --modal-bg: #fff;
+    --badge-bg: #eee;
+    --table-header-bg: #f9f9f9;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary-color: #e0e0e0;
+        --border-color: #444;
+        --bg-light: #1e1e1e;
+        --bg-main: #121212;
+        --text-color: #e0e0e0;
+        --text-muted: #aaa;
+        --modal-bg: #1e1e1e;
+        --badge-bg: #2a2a2a;
+        --table-header-bg: #1a1a1a;
+    }
 }
 
 body {
     font-family: Arial, sans-serif;
-    color: var(--primary-color);
+    color: var(--text-color);
     margin: 0;
-    padding: 20px;
-    background-color: #fff;
+    padding: 10px;
+    background-color: var(--bg-main);
     line-height: 1.4;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .sheet-container {
     max-width: 900px;
+    width: 100%;
     margin: 0 auto;
-    padding: 20px;
-    background: #fff;
+    padding: 10px;
+    background: var(--bg-main);
+    box-sizing: border-box;
 }
 
 header {
@@ -36,7 +59,7 @@ header {
     text-transform: uppercase;
     display: block;
     margin-bottom: 4px;
-    color: #555;
+    color: var(--text-muted);
 }
 
 input[type="text"],
@@ -44,17 +67,18 @@ input[type="number"],
 input[type="date"],
 input[type="time"],
 select {
-    font-size: 1.2rem;
-    padding: 6px 10px;
+    font-size: 1rem;
+    padding: 8px 10px;
     border: 1px solid var(--border-color);
     border-radius: 4px;
     width: 100%;
     box-sizing: border-box;
-    background: #fff;
+    background: var(--bg-main);
+    color: var(--text-color);
 }
 
 input#showNameInput {
-    font-size: 1.8rem;
+    font-size: clamp(1.2rem, 4vw, 1.8rem);
     font-weight: bold;
     width: 100%;
     border: none;
@@ -62,6 +86,7 @@ input#showNameInput {
     background: transparent;
     padding: 4px 0;
     outline: none;
+    color: var(--text-color);
 }
 
 input#showNameInput:focus {
@@ -75,13 +100,26 @@ input#showNameInput:focus {
     margin-top: 15px;
 }
 
+@media (max-width: 600px) {
+    .meta-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    body {
+        padding: 5px;
+    }
+    .sheet-container {
+        padding: 5px;
+    }
+}
+
 .meta-field label {
     font-size: 0.75rem;
     font-weight: bold;
     text-transform: uppercase;
     display: block;
     margin-bottom: 3px;
-    color: #555;
+    color: var(--text-muted);
 }
 
 .section-header {
@@ -89,6 +127,8 @@ input#showNameInput:focus {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 15px;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .section-header h2 {
@@ -105,7 +145,7 @@ input#showNameInput:focus {
 
 .btn {
     background-color: var(--primary-color);
-    color: #fff;
+    color: var(--bg-main);
     border: none;
     padding: 8px 14px;
     font-size: 0.9rem;
@@ -122,8 +162,16 @@ input#showNameInput:focus {
     text-decoration: underline;
 }
 
+/* Responsive Table Wrapper */
+#tableContainer {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
 .input-table {
     width: 100%;
+    min-width: 600px;
     border-collapse: collapse;
     margin-bottom: 20px;
 }
@@ -138,10 +186,10 @@ input#showNameInput:focus {
 }
 
 .input-table th {
-    background-color: var(--bg-light);
+    background-color: var(--table-header-bg);
     text-transform: uppercase;
     font-size: 0.75rem;
-    color: #555;
+    color: var(--text-muted);
 }
 
 .input-table th.route-th-empty {
@@ -170,6 +218,8 @@ input#showNameInput:focus {
     padding: 4px;
     border: 1px solid var(--border-color);
     border-radius: 4px;
+    background: var(--bg-main);
+    color: var(--text-color);
 }
 
 .input-table td.action-col {
@@ -180,18 +230,18 @@ input#showNameInput:focus {
 .delete-btn {
     background: transparent;
     border: none;
-    color: #c00;
+    color: #e53935;
     font-weight: bold;
     cursor: pointer;
     font-size: 1rem;
 }
 
 .delete-btn:hover {
-    color: #f00;
+    color: #f44336;
 }
 
 .route-col {
-    background-color: #000 !important;
+    background-color: #333 !important;
     color: #fff !important;
     font-weight: bold;
     text-transform: uppercase;
@@ -211,10 +261,10 @@ input#showNameInput:focus {
 }
 
 .placeholder-content {
-    border: 2px dashed #ddd;
-    padding: 40px;
+    border: 2px dashed var(--border-color);
+    padding: 40px 20px;
     text-align: center;
-    color: #777;
+    color: var(--text-muted);
     font-style: italic;
     border-radius: 6px;
 }
@@ -226,10 +276,12 @@ input#showNameInput:focus {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.6);
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    padding: 15px;
+    box-sizing: border-box;
 }
 
 .modal-overlay.active {
@@ -237,12 +289,16 @@ input#showNameInput:focus {
 }
 
 .modal {
-    background: #fff;
+    background: var(--modal-bg);
+    color: var(--text-color);
     padding: 25px;
     border-radius: 6px;
     width: 100%;
     max-width: 400px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    box-sizing: border-box;
+    max-height: 90vh;
+    overflow-y: auto;
 }
 
 .modal h3 {
@@ -261,7 +317,7 @@ input#showNameInput:focus {
     font-weight: bold;
     text-transform: uppercase;
     margin-bottom: 5px;
-    color: #555;
+    color: var(--text-muted);
 }
 
 .form-group select {
@@ -277,8 +333,8 @@ input#showNameInput:focus {
 }
 
 .btn-secondary {
-    background-color: #ddd;
-    color: #333;
+    background-color: var(--border-color);
+    color: var(--text-color);
 }
 
 .route-mgmt-section {
@@ -298,7 +354,7 @@ input#showNameInput:focus {
 }
 
 .route-badge {
-    background: #eee;
+    background: var(--badge-bg);
     padding: 4px 8px;
     border-radius: 4px;
     display: flex;
@@ -309,7 +365,7 @@ input#showNameInput:focus {
 .route-badge button {
     background: none;
     border: none;
-    color: #c00;
+    color: #e53935;
     font-weight: bold;
     cursor: pointer;
 }
@@ -317,7 +373,8 @@ input#showNameInput:focus {
 @media print {
     body {
         padding: 0;
-        background: #fff;
+        background: #fff !important;
+        color: #000 !important;
     }
     .sheet-container {
         border: none;
@@ -343,6 +400,7 @@ input#showNameInput:focus {
         border-radius: 0;
         padding: 2px 0;
         background: transparent;
+        color: #000 !important;
     }
     input#showNameInput {
         border: none;
@@ -361,6 +419,7 @@ input#showNameInput:focus {
         font-size: 0.85rem;
         font-weight: bold;
         text-align: center;
+        color: #000 !important;
         -webkit-appearance: none !important;
         -moz-appearance: textfield !important;
     }
@@ -379,6 +438,7 @@ input#showNameInput:focus {
         border: none !important;
         padding: 3px 8px !important;
         font-size: 0.82rem;
+        color: #000 !important;
     }
     .input-table th {
         border-bottom: 1px solid #000 !important;
